@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividades del Personal en Ingeniería de Software</title>
+    <title>Laboratorio 1 - Actividades del Personal en SDLC</title>
     <style>
         :root {
-            --primary: #0f172a;
+            --primary: #1e293b;
             --accent: #2563eb;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text: #334155;
-            --text-light: #64748b;
-            --sidebar-width: 280px;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --border: #e2e8f0;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --sidebar-width: 260px;
         }
 
         * {
@@ -22,65 +23,65 @@
         }
 
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
             line-height: 1.6;
             display: flex;
             min-height: 100vh;
         }
 
-        /* BANNER Y PANEL LATERAL (SIDEBAR) */
+        /* BARRA LATERAL ACCESIBLE Y LIGERA */
         aside {
             width: var(--sidebar-width);
             background-color: var(--primary);
-            color: white;
+            color: #ffffff;
             position: fixed;
             top: 0;
             bottom: 0;
             left: 0;
-            padding: 2rem 1rem;
+            padding: 1.5rem 1rem;
             display: flex;
             flex-direction: column;
             overflow-y: auto;
-            box-shadow: 4px 0 10px rgba(0,0,0,0.1);
         }
 
-        aside .brand {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #f8fafc;
-            margin-bottom: 0.3rem;
-            line-height: 1.3;
-        }
-
-        aside .subtitle {
-            font-size: 0.8rem;
-            color: #94a3b8;
-            margin-bottom: 2rem;
+        .sidebar-header {
             border-bottom: 1px solid #334155;
             padding-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
 
-        aside nav {
+        .sidebar-header h2 {
+            font-size: 1.05rem;
+            color: #f1f5f9;
+            font-weight: bold;
+        }
+
+        .sidebar-header p {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 0.2rem;
+        }
+
+        nav {
             display: flex;
             flex-direction: column;
             gap: 0.4rem;
         }
 
-        aside nav a {
+        nav a {
             color: #cbd5e1;
             text-decoration: none;
-            padding: 0.75rem 1rem;
-            font-size: 0.9rem;
-            border-radius: 6px;
-            transition: all 0.2s ease;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.88rem;
+            border-radius: 4px;
+            transition: background 0.2s ease;
         }
 
-        aside nav a:hover {
+        nav a:hover {
             background-color: var(--accent);
-            color: white;
-            transform: translateX(4px);
+            color: #ffffff;
         }
 
         /* CONTENIDO PRINCIPAL */
@@ -88,286 +89,284 @@
             margin-left: var(--sidebar-width);
             flex: 1;
             padding: 2.5rem 3rem;
-            max-width: 1200px;
+            max-width: 1100px;
         }
 
-        .intro-card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 1.5rem 2rem;
-            margin-bottom: 2rem;
+        .page-header {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
             border-left: 5px solid var(--accent);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 0.4rem;
+        }
+
+        .page-header p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
         }
 
         .section-card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.8rem;
             margin-bottom: 2rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-            border: 1px solid #e2e8f0;
-            scroll-margin-top: 2rem; /* Offset para el scroll fino */
+            scroll-margin-top: 1.5rem;
         }
 
         .section-card h2 {
             color: var(--accent);
+            font-size: 1.25rem;
             border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.2rem;
-            font-size: 1.4rem;
+            padding-bottom: 0.4rem;
+            margin-bottom: 1rem;
         }
 
-        .content-grid {
+        .grid-container {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 2fr 1fr;
             gap: 1.5rem;
+            align-items: start;
         }
 
-        @media (min-width: 900px) {
-            .content-grid {
-                grid-template-columns: 2fr 1fr;
-            }
-        }
-
-        .img-container img {
-            width: 100%;
-            max-height: 220px;
-            object-fit: cover;
-            border-radius: 6px;
-            border: 1px solid #cbd5e1;
-        }
-
-        .img-caption {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            margin-top: 0.4rem;
-            text-align: center;
-        }
-
-        ul {
-            margin-left: 1.5rem;
+        .info-list {
+            margin-left: 1.2rem;
             margin-top: 0.5rem;
         }
 
-        li {
+        .info-list li {
             margin-bottom: 0.4rem;
+            font-size: 0.95rem;
         }
 
-        .sub-maintenance {
-            background-color: #f1f5f9;
-            padding: 1rem 1.2rem;
-            border-radius: 6px;
-            margin-top: 1rem;
+        .img-box img {
+            width: 100%;
+            height: auto;
+            max-height: 180px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid var(--border);
         }
 
-        .sub-maintenance h3 {
+        .img-caption {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 0.3rem;
+        }
+
+        .sub-block {
+            background-color: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 0.8rem 1rem;
+            margin-top: 0.8rem;
+        }
+
+        .sub-block h3 {
+            font-size: 0.95rem;
             color: var(--primary);
-            font-size: 1.05rem;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
         }
 
         footer {
             margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #e2e8f0;
-            color: var(--text-light);
-            font-size: 0.85rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
             text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
 
-        /* Adaptabilidad Móvil */
         @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
-            aside {
-                position: relative;
-                width: 100%;
-                height: auto;
-            }
-            main {
-                margin-left: 0;
-                padding: 1.5rem;
-            }
+            body { flex-direction: column; }
+            aside { position: relative; width: 100%; height: auto; }
+            main { margin-left: 0; padding: 1.5rem; }
+            .grid-container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- SIDEBAR / PANEL LATERAL -->
+    <!-- PANEL LATERAL -->
     <aside>
-        <div class="brand">Ingeniería de Software</div>
-        <div class="subtitle">Actividades del Personal en Proyectos SDLC</div>
+        <div class="sidebar-header">
+            <h2>Ingeniería de Software I</h2>
+            <p>Laboratorio #1 - SDLC</p>
+        </div>
         
         <nav>
-            <a href="#req">Obtención de Requerimientos</a>
-            <a href="#analisis">Análisis de Requerimientos</a>
-            <a href="#diseno">Diseño del Software</a>
-            <a href="#desarrollo">Desarrollo y Codificación</a>
-            <a href="#pruebas">Pruebas y QA</a>
-            <a href="#despliegue">Despliegue e Infraestructura</a>
-            <a href="#mantenimiento">Mantenimiento de Software</a>
-            <a href="#referencias">Referencias Bibliográficas</a>
+            <a href="#req">Requerimientos</a>
+            <a href="#analisis">Análisis</a>
+            <a href="#diseno">Diseño de Software</a>
+            <a href="#desarrollo">Desarrollo y Código</a>
+            <a href="#pruebas">Pruebas / QA</a>
+            <a href="#despliegue">Despliegue</a>
+            <a href="#mantenimiento">Mantenimiento</a>
+            <a href="#referencias">Referencias</a>
         </nav>
     </aside>
 
     <!-- CONTENIDO PRINCIPAL -->
     <main>
 
-        <div class="intro-card">
-            <h2>Metodología de Búsqueda e Investigación</h2>
-            <p>Este sitio compila las actividades clave del equipo en el ciclo de vida del desarrollo de software (SDLC). La información fue recabada mediante búsquedas web y sustentada con literatura académica de repositorios como Redalyc, PMBOK y RUP.</p>
+        <div class="page-header">
+            <h1>Actividades del Personal en el Desarrollo de Software</h1>
+            <p>Investigación sobre las fases del ciclo de vida del software (SDLC), el personal involucrado y sus entregables principales.</p>
         </div>
 
-        <!-- 1. Obtención de Requerimientos -->
+        <!-- 1. Requerimientos -->
         <section id="req" class="section-card">
-            <h2>1. Obtención de Requerimientos (Elicitación)</h2>
-            <div class="content-grid">
+            <h2>1. Obtención de Requerimientos</h2>
+            <div class="grid-container">
                 <div>
-                    <p>Fase inicial donde se identifican las necesidades del cliente y usuarios finales para definir las capacidades del sistema.</p>
-                    <ul>
-                        <li><strong>Personal clave:</strong> Analista de Negocio (Business Analyst), Product Owner.</li>
-                        <li><strong>Actividades principales:</strong> Entrevistas, talleres con <em>stakeholders</em>, encuestas y observación directa de procesos.</li>
-                        <li><strong>Entregables:</strong> Documento preliminar de visión del producto y backlog de requerimientos.</li>
+                    <p>Fase inicial donde se capturan las necesidades del usuario final y del negocio para definir qué debe hacer el sistema.</p>
+                    <ul class="info-list">
+                        <li><strong>Personal encargado:</strong> Analista de Negocio (Business Analyst), Product Owner.</li>
+                        <li><strong>Actividades:</strong> Entrevistas, reuniones con stakeholders y encuestas.</li>
+                        <li><strong>Entregable principal:</strong> Documento de visión y Backlog de requerimientos.</li>
                     </ul>
                 </div>
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80" alt="Reunión de requerimientos">
-                    <p class="img-caption">Entrevistas y talleres de elicitación.</p>
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80" alt="Requerimientos">
+                    <p class="img-caption">Reunión de toma de requisitos.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 2. Análisis de Requerimientos -->
+        <!-- 2. Análisis -->
         <section id="analisis" class="section-card">
             <h2>2. Análisis de Requerimientos</h2>
-            <div class="content-grid">
+            <div class="grid-container">
                 <div>
-                    <p>Refinamiento y modelado de los requisitos para eliminar ambigüedades, resolver inconsistencias y validar la factibilidad técnica.</p>
-                    <ul>
-                        <li><strong>Personal clave:</strong> Analista de Sistemas, Arquitecto de Software.</li>
-                        <li><strong>Actividades principales:</strong> Clasificación de requisitos funcionales y no funcionales, elaboración de diagramas UML y Casos de Uso.</li>
-                        <li><strong>Entregables:</strong> Especificación de Requerimientos de Software (SRS / ERS).</li>
+                    <p>Modelado y estructuración de los requisitos recolectados para asegurar que sean viables y sin contradicciones.</p>
+                    <ul class="info-list">
+                        <li><strong>Personal encargado:</strong> Analista de Sistemas, Arquitecto de Software.</li>
+                        <li><strong>Actividades:</strong> Clasificación de requisitos funcionales/no funcionales y diagramación UML.</li>
+                        <li><strong>Entregable principal:</strong> Especificación de Requerimientos de Software (ERS / SRS).</li>
                     </ul>
                 </div>
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80" alt="Análisis de requisitos">
-                    <p class="img-caption">Estructuración y especificación técnica.</p>
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80" alt="Análisis">
+                    <p class="img-caption">Modelado de requisitos.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 3. Diseño del Software -->
+        <!-- 3. Diseño -->
         <section id="diseno" class="section-card">
             <h2>3. Diseño del Software</h2>
-            <div class="content-grid">
+            <div class="grid-container">
                 <div>
-                    <p>Definición de la arquitectura del sistema, esquemas de datos, componentes e interfaces gráficas antes de la codificación.</p>
-                    <ul>
-                        <li><strong>Personal clave:</strong> Arquitecto de Software, Diseñador UX/UI, Administrador de Base de Datos (DBA).</li>
-                        <li><strong>Actividades principales:</strong> Selección del stack tecnológico, diseño de bases de datos, diagramas ER y prototipos interactivos.</li>
-                        <li><strong>Entregables:</strong> Documento de Arquitectura (SAD) y maquetas navegables.</li>
+                    <p>Definición de la arquitectura técnica, base de datos e interfaz de usuario previa a la codificación.</p>
+                    <ul class="info-list">
+                        <li><strong>Personal encargado:</strong> Arquitecto de Software, Diseñador UX/UI, DBA.</li>
+                        <li><strong>Actividades:</strong> Diseño de base de datos, diagrama entidad-relación y prototipado.</li>
+                        <li><strong>Entregable principal:</strong> Documento de Arquitectura (SAD) y maquetas navegables.</li>
                     </ul>
                 </div>
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=600&q=80" alt="Diseño de interfaz">
-                    <p class="img-caption">Prototipado visual y modelado arquitectónico.</p>
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=600&q=80" alt="Diseño">
+                    <p class="img-caption">Diseño de arquitectura e interfaz.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 4. Desarrollo del Software -->
+        <!-- 4. Desarrollo -->
         <section id="desarrollo" class="section-card">
-            <h2>4. Desarrollo del Software (Codificación)</h2>
-            <div class="content-grid">
+            <h2>4. Desarrollo y Codificación</h2>
+            <div class="grid-container">
                 <div>
-                    <p>Construcción del sistema traduciendo los documentos de diseño en código fuente ejecutable, seguro y limpio.</p>
-                    <ul>
-                        <li><strong>Personal clave:</strong> Programadores y Desarrolladores (Frontend, Backend, Fullstack).</li>
-                        <li><strong>Actividades principales:</strong> Programación, control de versiones (Git), integración de servicios web (APIs) y pruebas unitarias.</li>
-                        <li><strong>Entregables:</strong> Código fuente versionado e incrementos funcionales.</li>
+                    <p>Traducción de los documentos de diseño en código fuente funcional mediante lenguajes de programación.</p>
+                    <ul class="info-list">
+                        <li><strong>Personal encargado:</strong> Programadores / Desarrolladores (Frontend, Backend).</li>
+                        <li><strong>Actividades:</strong> Programación de módulos, consumo de APIs y control de versiones con Git.</li>
+                        <li><strong>Entregable principal:</strong> Código fuente estructurado e incrementos del sistema.</li>
                     </ul>
                 </div>
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Desarrollo de código">
-                    <p class="img-caption">Implementación de módulos y lógica de negocio.</p>
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Desarrollo">
+                    <p class="img-caption">Construcción del sistema.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 5. Pruebas y Aseguramiento de la Calidad -->
+        <!-- 5. Pruebas -->
         <section id="pruebas" class="section-card">
-            <h2>5. Pruebas y Aseguramiento de la Calidad (QA)</h2>
-            <div class="content-grid">
+            <h2>5. Pruebas y Aseguramiento de Calidad (QA)</h2>
+            <div class="grid-container">
                 <div>
-                    <p>Verificación técnica para garantizar que el software opere sin fallos y cumpla con las especificaciones del cliente.</p>
-                    <ul>
-                        <li><strong>Personal clave:</strong> Ingeniero de QA, Tester de Software (QA Manual / Automation).</li>
-                        <li><strong>Actividades principales:</strong> Diseño y ejecución de casos de prueba (funcionales, integración, rendimiento y seguridad).</li>
-                        <li><strong>Entregables:</strong> Reporte de hallazgos (bugs), matriz de cobertura y certificación de calidad.</li>
+                    <p>Proceso de validación para detectar fallos, errores de rendimiento o vulnerabilidades antes de la entrega.</p>
+                    <ul class="info-list">
+                        <li><strong>Personal encargado:</strong> Ingeniero de QA, Tester de Software.</li>
+                        <li><strong>Actividades:</strong> Pruebas funcionales, unitarias, de integración y reporte de bugs.</li>
+                        <li><strong>Entregable principal:</strong> Reporte de pruebas y matriz de bugs corregidos.</li>
                     </ul>
                 </div>
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Aseguramiento de calidad">
-                    <p class="img-caption">Ejecución de pruebas y control de calidad.</p>
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Pruebas">
+                    <p class="img-caption">Ejecución de pruebas de calidad.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 6. Despliegue o Puesta en Marcha -->
+        <!-- 6. Despliegue -->
         <section id="despliegue" class="section-card">
             <h2>6. Despliegue o Puesta en Marcha</h2>
-            <div class="content-grid">
+            <div class="grid-container">
                 <div>
-                    <p>Instalación y liberación del software en el entorno de producción para su uso operativo final.</p>
-                    <ul>
-                        <li><strong>Personal clave:</strong> Ingeniero DevOps, Administrador de Sistemas / Nube.</li>
-                        <li><strong>Actividades principales:</strong> Configuración de servidores, automatización de despliegues (CI/CD), migración de datos y capacitación.</li>
-                        <li><strong>Entregables:</strong> Aplicación alojada en producción y manuales operativos.</li>
+                    <p>Instalación y publicación del sistema en servidores de producción para el acceso de los usuarios finales.</p>
+                    <ul class="info-list">
+                        <li><strong>Personal encargado:</strong> Ingeniero DevOps, Administrador de Sistemas.</li>
+                        <li><strong>Actividades:</strong> Configuración de servidores, despliegue de base de datos y capacitación.</li>
+                        <li><strong>Entregables:</strong> Sistema publicado en entorno real y manuales de usuario.</li>
                     </ul>
                 </div>
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=600&q=80" alt="Despliegue e infraestructura">
-                    <p class="img-caption">Puesta en producción y gestión de infraestructura.</p>
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=600&q=80" alt="Despliegue">
+                    <p class="img-caption">Puesta en producción.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 7. Mantenimiento de Software -->
+        <!-- 7. Mantenimiento -->
         <section id="mantenimiento" class="section-card">
-            <h2>7. Mantenimiento de Software</h2>
-            <p>Fase posterior a la entrega enfocada en preservar la operatividad, optimizar componentes y resolver incidencias.</p>
-
-            <div class="sub-maintenance">
+            <h2>7. Mantenimiento del Software</h2>
+            <p>Soporte continuo tras la entrega para garantizar la estabilidad y adaptar el software a nuevas necesidades.</p>
+            
+            <div class="sub-block">
                 <h3>7.1. Mantenimiento Correctivo</h3>
-                <p>Diagnóstico y resolución de errores o fallos detectados por los usuarios en el entorno real de producción.</p>
+                <p>Corrección de errores o fallas reportadas por los usuarios durante el uso diario.</p>
             </div>
-
-            <div class="sub-maintenance">
+            <div class="sub-block">
                 <h3>7.2. Mantenimiento Preventivo</h3>
-                <p>Refactorización de código e intervenciones técnicas para prevenir incidentes futuros y mejorar la mantenibilidad.</p>
+                <p>Revisiones y optimizaciones internas para evitar futuros fallos del sistema.</p>
             </div>
-
-            <div class="sub-maintenance">
+            <div class="sub-block">
                 <h3>7.3. Mantenimiento Adaptativo</h3>
-                <p>Modificaciones para ajustar la aplicación a cambios en el entorno (actualización de SO, navegadores, hardware o leyes).</p>
+                <p>Ajustes para que el sistema funcione con nuevos sistemas operativos, navegadores o cambios normativos.</p>
             </div>
         </section>
 
-        <!-- Referencias Académicas -->
+        <!-- Referencias -->
         <section id="referencias" class="section-card">
-            <h2>Referencias y Fuentes de Investigación</h2>
-            <ul>
+            <h2>Referencias Bibliográficas</h2>
+            <ul class="info-list">
                 <li>Pressman, R. S. (2010). <em>Ingeniería del Software: Un enfoque práctico</em> (7a ed.). McGraw-Hill.</li>
                 <li>Project Management Institute. (2021). <em>Guía del PMBOK</em> (7a ed.). PMI.</li>
-                <li>López, Y., & André, M. (2006). <em>Roles en el proceso de desarrollo de software</em>. Redalyc.</li>
                 <li>Sommerville, I. (2011). <em>Ingeniería del Software</em> (9a ed.). Pearson.</li>
             </ul>
         </section>
 
         <footer>
-            <p>Laboratorio de Ingeniería de Software I | Entrega Académica</p>
+            <p>Laboratorio de Ingeniería de Software I — Entregable Universitario</p>
         </footer>
 
     </main>
