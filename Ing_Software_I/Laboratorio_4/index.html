@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio 4 - Modelos de Desarrollo y Ciclos de Vida</title>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --border: #cbd5e1;
+            --text-main: #1e293b;
+            --text-muted: #475569;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .paper-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 3rem 4rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+  
+        header.article-header {
+            text-align: center;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            font-family: Arial, sans-serif;
+        }
+
+        .journal-tag {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin: 0.8rem 0 0.5rem;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .meta-info {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            padding-top: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .author-name {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            text-align: justify;
+        }
+
+        .column section {
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-family: Arial, sans-serif;
+            font-size: 1.15rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        p {
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            text-indent: 1rem;
+        }
+
+        blockquote {
+            font-style: italic;
+            background-color: #eff6ff;
+            border-left: 3px solid var(--accent);
+            padding: 0.8rem 1rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: #1e3a8a;
+        }
+
+        
+        .table-section {
+            grid-column: 1 / -1;
+            margin-top: 1rem;
+            border-top: 2px solid var(--primary);
+            padding-top: 1.5rem;
+            font-family: Arial, sans-serif;
+        }
+
+        .table-section h2 {
+            text-align: center;
+            border-bottom: none;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid var(--border);
+            padding: 0.75rem 1rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary);
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+        }
+
+        /* RESPONSIVO PARA MÓVILES */
+        @media (max-width: 850px) {
+            .paper-container { padding: 1.5rem; }
+            .two-column-layout { grid-template-columns: 1fr; }
+            p { text-indent: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="paper-container">
+
+        <!-- ENCABEZADO TIPO ARTÍCULO -->
+        <header class="article-header">
+            <span class="journal-tag">Ingeniería de Software Aplicada I — Laboratorio N.º 4</span>
+            <h1>Modelos de Desarrollo y Ciclos de Vida del Software</h1>
+            <p class="subtitle">Del plano rígido a la construcción evolutiva: cómo decide un equipo de software por dónde empezar a construir</p>
+            <div class="meta-info">
+                <span><strong>Autor:</strong> <span class="author-name">José Sousa</span></span>
+                <span><strong>Institución:</strong> Universidad Tecnológica de Panamá (Sede Panamá Oeste)</span>
+            </div>
+        </header>
+
+        <!-- LAYOUT A DOS COLUMNAS -->
+        <div class="two-column-layout">
+
+            <!-- COLUMNA IZQUIERDA -->
+            <div class="column">
+                
+                <p>Todo sistema de software nace de una apuesta: ¿construimos el plano completo antes de levantar la primera pared, o levantamos la primera pared y ajustamos el plano sobre la marcha? Esa apuesta tiene nombre propio en la ingeniería de software, y se llama modelo de ciclo de vida.</p>
+
+                <section>
+                    <h2>1. El Paradigma Tradicional</h2>
+                    <p>El paradigma tradicional agrupa a los modelos de desarrollo más antiguos de la disciplina, aquellos que entienden el software como una obra de ingeniería civil: se planifica por completo antes de construir. Su representante más conocido es el modelo en cascada (waterfall), propuesto formalmente por Winston Royce en 1970, que organiza el trabajo en fases secuenciales — análisis de requisitos, diseño, implementación, verificación y mantenimiento — donde cada fase debe cerrarse por completo antes de abrir la siguiente.</p>
+                    <p>La lógica detrás de este paradigma es la previsibilidad: si los requisitos están claros desde el inicio, documentar cada fase permite estimar costos, plazos y recursos con relativa exactitud, y deja un rastro de documentación útil para auditorías, contratos y proyectos regulados.</p>
+                    
+                    <blockquote>“Cada fase debe cerrarse por completo antes de abrir la siguiente: la promesa es previsibilidad a cambio de rigidez.”</blockquote>
+                </section>
+
+                <section>
+                    <h2>2. Modelo Tradicional y sus Variantes</h2>
+                    <p>Puesto que la cascada pura resultó demasiado inflexible para proyectos reales — donde los requisitos casi nunca permanecen estáticos — surgieron variantes que conservan la estructura secuencial pero añaden mecanismos de retroalimentación:</p>
+                    <p><strong>• Cascada con retroalimentación:</strong> permite regresar a una fase anterior cuando se detectan errores, en lugar de avanzar en una sola dirección.</p>
+                    <p><strong>• Modelo en V:</strong> extiende la cascada emparejando cada fase de desarrollo con una fase de prueba correspondiente, reforzando la verificación temprana.</p>
+                    <p><strong>• Modelo por etapas ("Sashimi"):</strong> solapa ligeramente las fases para reducir los tiempos muertos entre ellas.</p>
+                </section>
+
+                <section>
+                    <h2>3. Modelo Incremental</h2>
+                    <p>El modelo incremental combina elementos del modelo en cascada con una idea distinta: en lugar de entregar el sistema completo al final, el producto se construye y se entrega en piezas funcionales llamadas incrementos. Cada incremento añade nuevas funcionalidades al sistema ya entregado, de modo que el cliente recibe software operativo desde etapas tempranas.</p>
+                    <p>Esto reduce el riesgo de que un error de concepción se descubra solo hasta el final. Es especialmente útil cuando los requisitos generales están claros, pero se prevé que evolucionen con el uso real.</p>
+                </section>
+
+            </div>
+
+            <!-- COLUMNA DERECHA -->
+            <div class="column">
+
+                <section>
+                    <h2>4. Modelo Iterativo</h2>
+                    <p>El modelo iterativo propone construir el software mediante ciclos repetidos (iteraciones), donde en cada vuelta se revisan y refinan los requisitos, el diseño y la implementación de una versión anterior. A diferencia del incremental, que suma piezas nuevas, el iterativo perfecciona lo que ya existe: cada iteración produce una versión más completa y más precisa del sistema.</p>
+                    <p>Este modelo asume, desde el principio, que no es posible conocer todos los requisitos de antemano. Es la base conceptual detrás de buena parte de las metodologías ágiles modernas.</p>
+                </section>
+
+                <section>
+                    <h2>5. Modelo Espiral</h2>
+                    <p>Propuesto por Barry Boehm en 1986, el modelo espiral combina el enfoque iterativo con un componente que lo distingue de todos los anteriores: el análisis explícito de riesgos en cada ciclo. El proyecto avanza en forma de espiral a través de cuatro cuadrantes que se repiten en cada vuelta:</p>
+                    <strong>1.</strong> Determinar objetivos, alternativas y restricciones.<br>
+                    <strong>2.</strong> Evaluar alternativas e identificar y resolver riesgos.<br>
+                    <strong>3.</strong> Desarrollar y verificar el producto de esa vuelta.<br>
+                    <strong>4.</strong> Planificar la siguiente iteración.</p>
+                    <p>Cada vuelta de la espiral es más costosa y ambiciosa, lo que lo hace adecuado para proyectos grandes, costosos y de alto riesgo.</p>
+                </section>
+
+                <section>
+                    <h2>6. Modelo Orientado a la Reutilización</h2>
+                    <p>Este enfoque parte de la premisa de que no todo software debe construirse desde cero. Estructura el proceso en torno a la identificación, adaptación e integración de componentes ya existentes (bibliotecas, frameworks, servicios).</p>
+                    <p>Sus etapas incluyen el análisis de componentes disponibles, la modificación de requisitos para ajustarse a lo disponible, el diseño del sistema alrededor de ellos y su integración final. Reduce tiempo y costo de desarrollo, pero exige cuidado en la compatibilidad y mantenimiento de dependencias.</p>
+                </section>
+
+                <section>
+                    <h2>Conclusión</h2>
+                    <p>Ningún modelo es universalmente superior: la elección depende de qué tan estables sean los requisitos, del tamaño y el riesgo del proyecto, y de cuánto margen exista para aprender sobre la marcha. Comprender estas alternativas permite a un equipo de ingeniería elegir el camino más adecuado para construir un sistema.</p>
+                </section>
+
+            </div>
+
+            
+            <div class="table-section">
+                <h2>Resumen Sintético: En una Mirada</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Modelo</th>
+                            <th>Idea Central</th>
+                            <th>Mejor cuando</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Tradicional / Cascada</strong></td>
+                            <td>Fases secuenciales y documentadas</td>
+                            <td>Requisitos estables y claros</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Incremental</strong></td>
+                            <td>Se entregan piezas funcionales</td>
+                            <td>El cliente necesita valor temprano</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Iterativo</strong></td>
+                            <td>Se refina lo ya construido</td>
+                            <td>El problema se entiende poco a poco</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Espiral</strong></td>
+                            <td>Iteración + análisis de riesgo</td>
+                            <td>Proyecto grande y de alto riesgo</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Orientado a Reutilización</strong></td>
+                            <td>Se ensamblan componentes existentes</td>
+                            <td>Hay componentes probados disponibles</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>Laboratorio #4 — Ingeniería de Software Aplicada I | Elaborado por José Sousa</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
