@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Académico | Ingeniería de Software Aplicada I</title>
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --accent-color: #2563eb;
+            --bg-color: #f8fafc;
+            --text-color: #334155;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Barra de Navegación */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #60a5fa;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        nav ul li a:hover {
+            color: #60a5fa;
+        }
+
+        /* Contenedor Principal */
+        main {
+            max-width: 1100px;
+            margin: 7rem auto 3rem auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        /* Contenedor de Archivos Individuales */
+        .file-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .file-item {
+            background: #f1f5f9;
+            border-left: 4px solid var(--accent-color);
+            padding: 1rem 1.5rem;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .file-info h4 {
+            color: var(--primary-color);
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .file-info p {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 0;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 0.15rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Botones de acción */
+        .btn-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .btn {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .btn-secondary {
+            background-color: #64748b;
+        }
+
+        .btn-secondary:hover {
+            background-color: #475569;
+        }
+
+        /* Estilo del Popup / Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(15, 23, 42, 0.75);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 85%;
+            max-width: 900px;
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #64748b;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .close-btn:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-body {
+            margin-top: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-body object, .modal-body img {
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            flex-grow: 1;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav ul {
+                justify-content: center;
+            }
+            .file-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .btn-group {
+                width: 100%;
+                justify-content: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menú de Navegación -->
+    <header>
+        <nav>
+            <div class="logo">Portafolio UTP | Ing. de Software Aplicada I</div>
+            <ul>
+                <li><a href="#presentacion">Presentación</a></li>
+                <li><a href="#modulo1">Módulo I</a></li>
+                <li><a href="#modulo2">Módulo II</a></li>
+                <li><a href="#modulo3">Módulo III</a></li>
+                <li><a href="#evaluaciones">Parcial y Evidencias</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main>
+        <!-- Sección Presentación -->
+        <section id="presentacion">
+            <h1>Portafolio de Asignatura</h1>
+            <p>Recopilación oficial de evidencias, tareas, laboratorios, sustentaciones y proyectos desarrollados durante el semestre académico.</p>
+            <hr style="margin: 1rem 0; border: 0; border-top: 1px solid var(--border-color);">
+            <p><strong>Estudiante:</strong> Jose Rolando Sousa Matos</p>
+            <p><strong>Carrera:</strong> Licenciatura en Ingeniería de Software</p>
+            <p><strong>Universidad:</strong> Universidad Tecnológica de Panamá (UTP)</p>
+            <p><strong>Curso:</strong> Ingeniería de Software Aplicada I</p>
+        </section>
+
+        <!-- Módulo I -->
+        <section id="modulo1">
+            <h2>Módulo I: Fundamentos de la Ingeniería de Software</h2>
+            <p>Contenidos teóricos iniciales, definiciones, desafíos y análisis de los procesos fundamentales.</p>
+            
+            <div class="file-list">
+                <!-- Asignación 1 -->
+                <div class="file-item">
+                    <div class="file-info">
+                        <span class="badge">Semana 1</span>
+                        <h4>Asignación #1</h4>
+                        <p>Definición y desafíos de la Ingeniería de Software.</p>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn" onclick="openModal('modal-asig1')">Ver</button>
+                        <a href="Evidencias/asignauno.pdf" target="_blank" class="btn btn-secondary" download>Descargar</a>
+                    </div>
+                </div>
+
+                <!-- Test Diagnóstico -->
+                <div class="file-item">
+                    <div class="file-info">
+                        <span class="badge">Semana 1</span>
+                        <h4>Test Diagnóstico</h4>
+                        <p>Evaluación diagnóstica inicial de conocimientos del curso.</p>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn" onclick="openModal('modal-test')">Ver</button>
+                        <a href="Evidencias/TestDiagnostico.pdf" target="_blank" class="btn btn-secondary" download>Descargar</a>
+                    </div>
+                </div>
+
+                <!-- Laboratorio 1 -->
+                <div class="file-item">
+                    <div class="file-info">
+                        <span class="badge">Semana 2</span>
+                        <h4>Laboratorio #1</h4>
+                        <p>Participantes, papeles, sistemas, modelos y restricciones del software.</p>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn" onclick="openModal('modal-lab1')">Ver</button>
+                        <a href="Evidencias/Laboratorio1.pdf" target="_blank" class="btn btn-secondary" download>Descargar</a>
+                    </div>
+                </div>
+
+                <!-- Laboratorio 2 -->
+                <div class="file-item">
+                    <div class="file-info">
+                        <span class="badge">Semana 3</span>
+                        <h4>Laboratorio #2</h4>
+                        <p>Actividades de desarrollo y ciclos de vida tradicionales e incrementales.</p>
+                    </div>
+                              <div class="btn-group">
+                        <a href="https://jsousam.github.io/ingenieria_software_I/Ing_Software_I/" target="_blank" class="btn">Ver</a>
+                    </div>
+                </div>
+
+                <!-- Taller en Equipo -->
+                <div class="file-item">
+                    <div class="file-info">
+                        <span class="badge">Semana 3</span>
+                        <h4>Taller en Equipo</h4>
+                        <p>Desarrollo colaborativo de aplicación de paradigmas ágiles.</p>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn" onclick="openModal('modal-taller')">Ver</button>
+                        <a href="Evidencias/Taller1.pdf" target="_blank" class="btn btn-secondary" download>Descargar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Módulo II -->
+        <section id="modulo2">
+            <h2>Módulo II: Técnicas de Recopilación de Datos y Entorno</h2>
+            <p>Análisis de requerimientos con el usuario y modelado formal del negocio.</p>
+
+            <div class="file-list">
+                <!-- Laboratorio 3 (Enlace externo) -->
+                <div class="file-item">
+                    <div class="file-info">
+                        <span class="badge">Semana 4</span>
+                        <h4>Laboratorio #3</h4>
+                        <p>Técnicas de recopilación de datos (Entrevistas y Storyboards).</p>
+                    </div>
+                    <div class="btn-group">
+                        <a href="https://jsousam.github.io/ingenieria_software_I/Ing_Software_I/" target="_blank" class="btn">Ver</a>
+                    </div>
+                </div>
+
+                <!-- Laboratorio 4 (Enlace externo) -->
+                <div class="file-item">
+                    <div class="file-info">
+                        <span class="badge">Semana 5</span>
+                        <h4>Laboratorio #4</h4>
+                        <p>Encuestas, cuestionarios y experiencias de usuario aplicadas.</p>
+                    </div>
+                    <div class="btn-group">
+                        <a href="https://jsousam.github.io/ingenieria_software_I/Ing_Software_I/" target="_blank" class="btn">Ver</a>
+                    </div>
+                </div>
+
+                <!-- Proyecto de Investigación -->
+                <div class="file-item">
+                    <div class="file-info">
+                        <span class="badge">Semana 6</span>
+                        <h4>Proyecto de Investigación</h4>
+                        <p>Levantamiento de requerimientos.</p>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn" onclick="openModal('modal-proy-inv')">Ver</button>
+                        <a href="Evidencias/LevantamientoRequerimientos.pdf" target="_blank" class="btn btn-secondary" download>Descargar</a>
+                    </div>
+                </div>
+
+                <!-- PowerPoint de Sustentación -->
+                <div class="file-item">
+                    <div class="file-info">
+                        <span class="badge">Semana 6</span>
+                        <h4>PowerPoint de Sustentación</h4>
+                        <p>Presentación utilizada para la exposición del tema asignado.</p>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn" onclick="openModal('modal-ppt')">Ver</button>
+                        <a href="Evidencias/Presentacion_Levantamiento_Requerimientos.pptx" target="_blank" class="btn btn-secondary" download>Descargar</a>
+                    </div>
+                </div>
+
+                <!-- Cuadro de Reflexiones -->
+                <div class="file-item">
+                    <div class="file-info">
+                        <span class="badge">Semana 6</span>
+                        <h4>Cuadro de Reflexiones</h4>
+                        <p>Análisis y reflexiones sobre los temas expuestos en clases.</p>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn" onclick="openModal('modal-reflexiones')">Ver</button>
+                        <a href="Evidencias/Cuadro_CQA.pdf" target="_blank" class="btn btn-secondary" download>Descargar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Módulo III -->
+        <section id="modulo3">
+            <h2>Módulo III: Concepción del Sistema</h2>
+            <p>Análisis profundo del problema, visión y calidad del software.</p>
+
+            <div class="file-list">
+                <!-- Laboratorio 5 (Enlace externo) -->
+                <div class="file-item">
+                    <div class="file-info">
+                        <span class="badge">Semana 7</span>
+                        <h4>Laboratorio #5</h4>
+                        <p>Documento de visión, requerimientos funcionales/no funcionales y modelo FURPS.</p>
+                    </div>
+                    <div class="btn-group">
+                        <a href="https://jsousam.github.io/ingenieria_software_I/Ing_Software_I/" target="_blank" class="btn">Ver</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Parcial y Evidencias -->
+        <section id="evaluaciones">
+            <h2>Evaluaciones y Evidencias</h2>
+            <p>Registro de calificaciones oficiales de las evaluaciones del semestre.</p>
+            
+            <div class="file-list">
+                <div class="file-item">
+                    <div class="file-info">
+                        <span class="badge">Semana 5</span>
+                        <h4>Prueba Parcial #1</h4>
+                        <p>Captura de pantalla de la calificación obtenida en la evaluación en línea.</p>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn" onclick="openModal('modal-parcial')">Ver</button>
+                        <a href="Evidencias/parcial1.png" target="_blank" class="btn btn-secondary" download>Descargar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================= VENTANAS MODALES (POPUPS) ================= -->
+
+    <!-- Modal Asignación 1 -->
+    <div id="modal-asig1" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('modal-asig1')">&times;</button>
+            <h3>Evidencia: Asignación #1</h3>
+            <div class="modal-body">
+                <object data="Evidencias/asignauno.pdf" type="application/pdf">
+                    <p>Tu navegador no puede mostrar el PDF directamente. Puedes <a href="Evidencias/asignauno.pdf" target="_blank" download>descargarlo aquí</a>.</p>
+                </object>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Test Diagnóstico -->
+    <div id="modal-test" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('modal-test')">&times;</button>
+            <h3>Evidencia: Test Diagnóstico</h3>
+            <div class="modal-body">
+                <object data="Evidencias/TestDiagnostico.pdf" type="application/pdf"></object>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Lab 1 -->
+    <div id="modal-lab1" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('modal-lab1')">&times;</button>
+            <h3>Evidencia: Laboratorio #1</h3>
+            <div class="modal-body">
+                <object data="Evidencias/Laboratorio1.pdf" type="application/pdf"></object>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Lab 2 -->
+    <div id="modal-lab2" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('modal-lab2')">&times;</button>
+            <h3>Evidencia: Laboratorio #2</h3>
+            <div class="modal-body">
+                <object data="Evidencias/Laboratorio2.pdf" type="application/pdf"></object>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Taller en Equipo -->
+    <div id="modal-taller" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('modal-taller')">&times;</button>
+            <h3>Evidencia: Taller en Equipo</h3>
+            <div class="modal-body">
+                <object data="Evidencias/Taller1.pdf" type="application/pdf"></object>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Proyecto Investigación -->
+    <div id="modal-proy-inv" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('modal-proy-inv')">&times;</button>
+            <h3>Evidencia: Proyecto de Investigación</h3>
+            <div class="modal-body">
+                <object data="Evidencias/LevantamientoRequerimientos.pdf" type="application/pdf"></object>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal PowerPoint Sustentación -->
+    <div id="modal-ppt" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('modal-ppt')">&times;</button>
+            <h3>Evidencia: PowerPoint de Sustentación</h3>
+            <div class="modal-body">
+                <object data="Evidencias/LevantamientoRequerimientosPresentacion.pdf" type="application/pdf"></object>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Cuadro de Reflexiones -->
+    <div id="modal-reflexiones" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('modal-reflexiones')">&times;</button>
+            <h3>Evidencia: Cuadro de Reflexiones</h3>
+            <div class="modal-body">
+                <object data="Evidencias/Cuadro_CQA.pdf" type="application/pdf"></object>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Parcial -->
+    <div id="modal-parcial" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('modal-parcial')">&times;</button>
+            <h3>Evidencia: Nota de Prueba Parcial #1</h3>
+            <div class="modal-body">
+                <img src="Evidencias/parcial1.png" alt="Captura de Nota Parcial 1" style="object-fit: contain;">
+            </div>
+        </div>
+    </div>
+
+    <!-- Script para controlar los modales -->
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "flex";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2026 - Universidad Tecnológica de Panamá (UTP) | Licenciatura en Ingeniería de Software</p>
+    </footer>
+
+</body>
+</html>
