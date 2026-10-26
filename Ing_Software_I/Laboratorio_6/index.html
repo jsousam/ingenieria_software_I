@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laboratorio # 6 - José Rolando Sousa Matos</title>
+  <style>
+    :root {
+      --primary-color: #0f172a;
+      --accent-color: #2563eb;
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #334155;
+      --text-dark: #0f172a;
+      --border-color: #cbd5e1;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      margin: 0;
+      padding: 2rem 1rem;
+    }
+
+    .lab-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+    }
+
+    .lab-header {
+      background: var(--primary-color);
+      color: #ffffff;
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .lab-subtitle {
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      letter-spacing: 2px;
+      color: #94a3b8;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .lab-title {
+      font-size: 2rem;
+      margin: 0 0 1rem 0;
+      font-weight: 700;
+    }
+
+    .author-info {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.5rem 1.25rem;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .author-info span {
+      margin: 0 0.5rem;
+      color: #cbd5e1;
+    }
+
+    .lab-body {
+      padding: 2rem;
+    }
+
+    h2 {
+      color: var(--text-dark);
+      font-size: 1.4rem;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    p.intro-text {
+      margin-bottom: 1.5rem;
+    }
+
+    /* Tabla Comparativa Exhaustiva */
+    .table-responsive {
+      overflow-x: auto;
+      margin-top: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .comparison-table th {
+      background-color: #1e293b;
+      color: #ffffff;
+      padding: 1rem;
+      font-weight: 600;
+      border-right: 1px solid #334155;
+    }
+
+    .comparison-table th:last-child {
+      border-right: none;
+    }
+
+    .comparison-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+      vertical-align: top;
+    }
+
+    .comparison-table td:last-child {
+      border-right: none;
+    }
+
+    .comparison-table tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    .comparison-table tr:hover {
+      background-color: #f1f5f9;
+    }
+
+    .concept-tag {
+      font-weight: 700;
+      color: var(--accent-color);
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 0.98rem;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #f1f5f9;
+      border-top: 1px solid var(--border-color);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+
+    footer p {
+      margin: 0;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .lab-body {
+        padding: 1.25rem;
+      }
+      .lab-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <article class="lab-container">
+    
+    <!-- Encabezado con Nombre y Cédula -->
+    <header class="lab-header">
+      <p class="lab-subtitle">Ingeniería de Software Aplicada I</p>
+      <h1 class="lab-title">LABORATORIO # 6</h1>
+      <div class="author-info">
+        <strong>José Rolando Sousa Matos</strong>
+        <span>|</span>
+        <strong>Céd.: 8-823-836</strong>
+      </div>
+    </header>
+
+    <main class="lab-body">
+      
+      <!-- CUADRO COMPARATIVO INTEGRAL -->
+      <section>
+        <h2>3.1. Cuadro Comparativo Integral: Análisis del Problema y Concepción del Sistema de Software</h2>
+        <p class="intro-text">Matriz comparativa que contiene cada uno de los elementos de análisis, especificación, visión, requerimientos funcionales/no funcionales, alcance, restricciones, propuesta y características del software.</p>
+
+        <div class="table-responsive">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th style="width: 16%;">Componente / Tema</th>
+                <th style="width: 20%;">Definición y Naturaleza</th>
+                <th style="width: 20%;">Propósito en la Ingeniería</th>
+                <th style="width: 22%;">Criterios de Evaluación / Diferenciación</th>
+                <th style="width: 22%;">Ejemplo Práctico Aplicado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 3.1 -->
+              <tr>
+                <td>
+                  <span class="concept-tag">3.1. Análisis del Problema</span>
+                </td>
+                <td>Proceso investigativo para comprender a fondo la situación actual, los dolores operativos y las fallas del entorno existente antes de diseñar código.</td>
+                <td>Evita desarrollar soluciones erróneas o construir software que no ataca la raíz del problema del cliente.</td>
+                <td>Se diferencia de la codificación en que se centra exclusivamente en el dominio del negocio y los actores involucrados.</td>
+                <td>Diagnosticar que el proceso de gestión de inventarios manual en almacenes causa pérdidas de un 15% mensual por extravío.</td>
+              </tr>
+              <!-- 3.1.1 -->
+              <tr>
+                <td>
+                  <span class="concept-tag">3.1.1. Necesidades</span>
+                </td>
+                <td>Carencias, requerimientos de supervivencia o debilidades críticas experimentadas por los usuarios u organización.</td>
+                <td>Establecer el punto de partida (el "por qué" absoluto) que justifica la inversión en el proyecto de software.</td>
+                <td>Son abstractas y de alto nivel; expresan dolores humanos o del negocio, desvinculándose de herramientas tecnológicas.</td>
+                <td>"La empresa necesita reducir los tiempos de auditoría y evitar quiebres de stock en las sucursales principales."</td>
+              </tr>
+              <!-- 3.1.2 -->
+              <tr>
+                <td>
+                  <span class="concept-tag">3.1.2. Características</span>
+                </td>
+                <td>Atributos generales, capacidades macro y servicios visibles que el sistema ofrecerá a los usuarios.</td>
+                <td>Actuar como puente de comunicación preliminar entre las expectativas de los stakeholders y las capacidades técnicas del equipo.</td>
+                <td>Se sitúan un nivel por debajo de las necesidades generales pero aún no detallan especificaciones de código o bases de datos.</td>
+                <td>"El sistema ofrecerá control automatizado de entradas/salidas, alertas de stock mínimo y reportes gerenciales en PDF."</td>
+              </tr>
+              <!-- 3.1.3 -->
+              <tr>
+                <td>
+                  <span class="concept-tag">3.1.3. Requerimientos</span>
+                </td>
+                <td>Declaraciones formales, condiciones y especificaciones detalladas que el sistema debe cumplir obligatoriamente por contrato o norma.</td>
+                <td>Servir de base absoluta para la arquitectura, el diseño de interfaces, la estimación de costos y la ejecución de pruebas (QA).</td>
+                <td>Deben ser verificables, claros, consistentes y trazables desde la fase de análisis hasta el despliegue final.</td>
+                <td>"El sistema validará el código de barras mediante lector USB y registrará el timestamp exacto de la transacción."</td>
+              </tr>
+              <!-- 3.1.3.1 -->
+              <tr>
+                <td>
+                  <span class="concept-tag">3.1.3.1. Documento VISIÓN</span>
+                </td>
+                <td>Instrumento estratégico que resume la oportunidad de negocio, objetivos del proyecto, perfiles de usuario y fronteras generales.</td>
+                <td>Alinear las expectativas de la directiva, clientes y desarrolladores en torno a una meta unificada.</td>
+                <td>A diferencia de los requerimientos técnicos, el Documento de Visión responde al panorama general y al valor comercial del software.</td>
+                <td>El documento Vision.docx que especifica que el sistema optimizará el flujo logístico para expandir las operaciones a nivel nacional.</td>
+              </tr>
+              <!-- 3.1.3.2 (Funcionales y No Funcionales) -->
+              <tr>
+                <td>
+                  <span class="concept-tag">3.1.3.2. Requerimientos Funcionales</span>
+                </td>
+                <td>Acciones, comportamientos, reglas de negocio y operaciones específicas que el software debe ejecutar ante entradas concretas.</td>
+                <td>Garantizar que la lógica operativa y las transacciones del negocio funcionen correctamente dentro de la plataforma.</td>
+                <td>Describen el <em>qué hace</em> el sistema en términos de procesos, cálculos, entradas y salidas de datos.</td>
+                <td>"El sistema permitirá registrar nuevos productos asignando SKU único, categoría, proveedor y precio de costo."</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="concept-tag">3.1.3.2. Requerimientos No Funcionales</span>
+                </td>
+                <td>Atributos de calidad, rendimiento, restricciones de seguridad, disponibilidad y escalabilidad del sistema.</td>
+                <td>Asegurar que el software no solo funcione, sino que opere de forma rápida, segura, tolerante a fallos y mantenible.</td>
+                <td>Evalúan propiedades transversales del sistema (como velocidad o protección de datos) y no una acción de negocio específica.</td>
+                <td>"El tiempo de consulta de inventario no debe superar 1.5 segundos bajo una concurrencia de 200 usuarios activos."</td>
+              </tr>
+              <!-- 3.1.3.2 (Alcance y Restricciones) -->
+              <tr>
+                <td>
+                  <span class="concept-tag">3.1.3.2. Alcance (Scope)</span>
+                </td>
+                <td>Delimitación exacta de los límites del proyecto; define formalmente qué se incluye y qué se excluye del desarrollo.</td>
+                <td>Prevenir el crecimiento descontrolado de los cambios (scope creep) y fijar entregables claros para el equipo.</td>
+                <td>Se contrasta definiendo explícitamente los límites operacionales: "lo que entra vs. lo que queda fuera de la fase actual".</td>
+                <td><em>Incluye:</em> Módulo web de almacén. <em>Excluye:</em> Aplicación móvil nativa para dispositivos iOS en esta primera versión.</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="concept-tag">3.1.3.2. Restricciones</span>
+                </td>
+                <td>Limitaciones de diseño, arquitectura, presupuesto, tiempo o tecnología impuestas por el entorno o el cliente.</td>
+                <td>Condicionar y acotar las decisiones de ingeniería para asegurar la viabilidad real del proyecto.</td>
+                <td>A diferencia del alcance (lo que se hace), la restricción representa los límites infranqueables bajo los cuales se debe trabajar.</td>
+                <td>"El sistema debe desplegarse en servidores Linux existentes y desarrollarse en un plazo estricto de 3 meses."</td>
+              </tr>
+              <!-- 3.1.3.3 -->
+              <tr>
+                <td>
+                  <span class="concept-tag">3.1.3.3. Propuesta del Sistema</span>
+                </td>
+                <td>Planteamiento arquitectónico, conceptual y tecnológico propuesto para dar solución integral al problema diagnosticado.</td>
+                <td>Demostrar al cliente cómo la solución tecnológica propuesta encaja operativamente y genera el retorno de inversión esperado.</td>
+                <td>Mientras la Visión describe el horizonte del negocio, la Propuesta del Sistema detalla la arquitectura técnica y el enfoque metodológico.</td>
+                <td>Propuesta de arquitectura basada en ASP.NET Core Web API, base de datos SQL Server y frontend web con interfaces responsivas.</td>
+              </tr>
+              <!-- 3.1.3.4 -->
+              <tr>
+                <td>
+                  <span class="concept-tag">3.1.3.4. Características del Software</span>
+                </td>
+                <td>Atributos estructurales y propiedades intrínsecas de diseño que definen el comportamiento y la calidad técnica del producto.</td>
+                <td>Garantizar la robustez, mantenibilidad, portabilidad y adaptabilidad del software ante futuros cambios tecnológicos.</td>
+                <td>Se centran en la excelencia del diseño de ingeniería, evaluando qué tan modular, escalable y seguro es el software construido.</td>
+                <td>"Arquitectura modular desacoplada mediante servicios web, facilitando la integración futura con pasarelas de pago y ERPs externos."</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>Laboratorio de Ingeniería de Software I — Grupo 9GS221</p>
+    </footer>
+
+  </article>
+
+</body>
+</html>
